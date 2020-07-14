@@ -5,9 +5,9 @@
 // };
 var Messages = function(username, text, roomname) {
   var message = {};
-  message.username = username;
-  message.text = text;
-  message.roomname = roomname;
+  message.username = username || '';
+  message.text = text || '';
+  message.roomname = roomname || 'lobby';
   return message;
 };
 
