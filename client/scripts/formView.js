@@ -17,7 +17,7 @@ var FormView = {
     // message['username'] = 'anon'; //CHANGE ME
     // message['text'] = $('#message').val();
     // message['roomname'] = 'lobby'; //CHANGE ME
-    var message = Messages(App.username, $('#message').val(), 'lobby');
+    var message = Messages(App.username, $('#message').val(), Rooms.selectedRoom);
     Parse.create(message);
   },
 
