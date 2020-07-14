@@ -11,14 +11,22 @@ var MessagesView = {
     //console.log(data);
     var html = '';
     //console.log(MessagesView.$chats.html(''));
-    console.log(data[0]);
+    //console.log(data[0]);
     for (var i = 0; i < data.length; i++) {
       data[i].username = data[i].username || '';
       data[i].text = data[i].text || '';
       html += MessageView.render(data[i]);
     }
-    console.log(html);
+    //console.log(html);
     $('#chats').append(html);
+  },
+
+  renderMessage: function(message) {
+    if (!message.hasOwnProperty('updatedAt')) {
+      message.updatedAt = '';
+      var $message = MessageView.render(message);
+      MessagesView.$chats.prepend($message);
+    }
   }
 
 };

@@ -14,7 +14,7 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
+    //setInterval(App.fetch, 5000);
   },
 
   fetch: function(callback = ()=>{}) {
@@ -22,6 +22,7 @@ var App = {
       // examine the response from the server request:
       console.log(data);
       MessagesView.render(data.results);
+      RoomsView.initialize(data.results);
       callback();
     });
   },
