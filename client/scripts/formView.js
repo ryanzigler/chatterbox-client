@@ -12,12 +12,7 @@ var FormView = {
 
     console.log($('#message').val());
 
-    // var message = {};
-    // //message['username'] = $(#)
-    // message['username'] = 'anon'; //CHANGE ME
-    // message['text'] = $('#message').val();
-    // message['roomname'] = 'lobby'; //CHANGE ME
-    var message = Messages(App.username, $('#message').val(), Rooms.selectedRoom);
+    var message = Messages.newMessage(App.username, $('#message').val(), Rooms.selectedRoom);
     Parse.create(message);
   },
 

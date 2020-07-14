@@ -3,12 +3,17 @@
 //   text: 'trololo',
 //   roomname: 'lobby'
 // };
-var Messages = function(username, text, roomname) {
-  var message = {};
-  message.username = username || '';
-  message.text = text || '';
-  message.roomname = roomname || 'lobby';
-  return message;
+var Messages = {
+
+  messageList: [],
+  newMessage: function(username, text, roomname) {
+    var message = {};
+    message.username = username;
+    message.text = text;
+    message.roomname = roomname;
+    return message;
+  }
+
 };
 
 // var message = {

@@ -7,45 +7,36 @@ var RoomsView = {
   initialize: function() {
     //create room func
 
-    // on roomsview button click click
+    // on roomsview button click
     RoomsView.$button.click(function() {
-      // var room prompt('enter a room name to create a room')
       var roomname = prompt('Enter a room name to create a new room');
-      //rooms.add(room)
-      Rooms.add(roomname);
-      // roomsview.select.val(room)
-      RoomsView.$select.val(roomname);
+      if (roomname !== null) {
+        Rooms.add(roomname);
+        RoomsView.$select.val(roomname);
+      }
     });
     // select room func
     RoomsView.$select.click(function() {
-      //roomsview select.change(function () {
       RoomsView.$select.change(function() {
-        // Rooms. **setSelectedRoom_helper**(roomsView.$select.val());
         Rooms.setSelectedRoom(RoomsView.$select.val());
+        //here, call a function in messagesView that only shows messages in the newly selected room
+        MessagesView.render();
       });
     });
   },
 
   // render === server actions
   render: function(data) {
-    // //Maybe populate the dropdown menu with the rooms here?
-    // var $rooms = room.get()
-    for (var i = 0; i < data.length; i++) {
-      if (data[i].hasOwnProperty('roomname')) {
-        Rooms.add(data[i].roomname);
-      }
-    }
-    console.log(Rooms.get());
-    //Rooms.get...
-    // RoomsView.$select.append(roomname)
-    var sortedRooms = Rooms.get();
-    for (var i = 0; i < sortedRooms.length; i++) {
-      roomsView.renderoom(sortedRooms[i]);
+    var $rooms = Rooms.get(data);
+    console.log($rooms);
+    for (var i = 0; i < $rooms.length; i++) {
+      RoomsView.renderRoom($rooms[i]);
     }
   },
 
   renderRoom: function(roomname) {
-    RoomsView.$select.append($('<option>').val(roomname).text(roomname));
+    var $option = $('<option>').val(roomname).text(roomname);
+    RoomsView.$select.append($option);
   }
 };
 
