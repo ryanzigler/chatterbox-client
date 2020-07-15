@@ -1,9 +1,14 @@
 var MessagesView = {
 
   $chats: $('#chats'),
+  $username: $('.username'),
 
   initialize: function() {
-    //Display initial messages (get all messages from array of object)
+    console.log(MessagesView.$username);
+    MessagesView.$username.on('click', '.username', function() {
+      var username = event.currentTarget.textContent;
+      Friends.toggleStatus(username);
+    });
   },
 
   render: function() {

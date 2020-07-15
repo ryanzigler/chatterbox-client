@@ -7,6 +7,7 @@ var Rooms = {
   // set dropdown display to created room
   // run RoomsView
   get: function(data) {
+    Rooms.list.add('lobby');
     for (var i = 0; i < data.length; i++) {
       if (data[i].hasOwnProperty('roomname')) {
         Rooms.list.add(data[i].roomname);
